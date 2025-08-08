@@ -112,7 +112,7 @@
   .summary-row{ display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; flex-wrap:wrap }
   .title{ font-size: clamp(16px, 2vw, 20px) }
   .duration{ margin-left:auto }
-  .arrow{ width:12px; height:12px; display:inline-block; margin-right:4px; transform: translateY(1px) rotate(0deg); transition: transform .18s ease, opacity .18s ease; opacity:.92; color:#d6d6db; background: currentColor; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat center / contain; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat center / contain; }
+  .arrow{ width:12px; height:12px; display:inline-block; margin-right:4px; transform: translateY(1px) rotate(0deg); transition: transform .18s ease, opacity .18s ease; opacity:.92; color:#d6d6db; background: currentColor; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat center / contain; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24  fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat center / contain; }
   details[open] .arrow{ transform: rotate(180deg); opacity:1 }
 
   /* Education */
@@ -136,7 +136,7 @@
   .proj-item summary{ cursor:pointer; user-select:none; list-style:none }
   .proj-item summary::-webkit-details-marker{ display:none }
 
-  /* Section controls */
+  /* Section controls (used only in Projects) */
   .section-controls{ margin:-2px 0 12px; display:flex; gap:8px; flex-wrap:wrap }
   .ghost{ appearance:none; background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); color:#f2f2f5; border:1px solid var(--stroke); border-radius:999px; padding:8px 12px; font-weight:700; font-size:.92rem; cursor:pointer }
   .ghost:hover{ transform: translateY(-1px); box-shadow:0 10px 30px -18px #000 }
@@ -160,11 +160,11 @@
 <header class="hero">
   <div class="hero-copy">
     <div class="eyebrow">Sr. Software Engineer · Qualcomm</div>
-    <h1>Design‑level craft.<br><span style="opacity:.65">Production‑level impact.</span></h1>
+    <h1>Engineering next-gen connectivity and intelligence.</h1>
     <p class="subtitle">Systems & networks engineer focused on performance, reliability, and delightful developer experiences. Ex‑NVIDIA. MS CE @ USC.</p>
     <div class="cta">
       <a class="btn primary" href="https://www.linkedin.com/in/sukruthbabu" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn secondary" href="mailto:hello@example.com">Email</a>
+      <a class="btn secondary" href="mailto:sukruthlb007@gmail.com">Email</a>
     </div>
   </div>
   <div class="hero-portrait">
@@ -176,7 +176,6 @@
 <main><div class="layout"><div class="content">
   <section id="about" class="card">
     <h2>About</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
     <p>I’m a passionate engineer with a deep rooted curiosity for how systems operate, from the core of wireless protocols to the latest in generative AI. My journey began with a degree in Electronics and Communication Engineering, where I built a strong foundation in both hardware and software. Over time, that foundation evolved into a relentless drive to push boundaries in software engineering and emerging technologies.</p>
     <p>Currently, I work as a Senior Software Engineer at Qualcomm in the Wireless R&amp;D division, where I focus on developing cutting edge next generation 5G/6G protocol software. My work sits at the intersection of performance, reliability, and innovation, building the software that powers tomorrow's wireless communication.</p>
     <p>Beyond protocols, I’ve explored a wide range of domains, including robotics, computer vision, automation, app development, and generative AI. I’ve worked with LangChain, Hugging Face, and LLaMA models to develop internal AI tools and improve developer workflows.</p>
@@ -186,7 +185,6 @@
 
   <section id="experience" class="card">
     <h2>Experience</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
     <div class="exp-item">
       <img class="exp-logo" src="assets/qualcomm.png" alt="Qualcomm"/>
       <div>
@@ -252,7 +250,6 @@
 
   <section id="education" class="card">
     <h2>Education</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
     <div class="edu-grid">
       <div class="edu-card">
         <img class="edu-logo" src="assets/usc.png" alt="USC"/>
@@ -328,8 +325,6 @@
 
   <section id="certs" class="card">
     <h2>Licenses &amp; Certifications</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
-
     <div class="cert-item">
       <img class="cert-logo" src="assets/linkedin.png" alt="LinkedIn Learning" />
       <div>
@@ -642,7 +637,6 @@
 
   <section id="publications" class="card">
     <h2>Publications</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
     <ul>
       <li><strong>BAN — Implementation</strong> — International Journal of Advanced Research in Computer and Communication Engineering (IJARCCE), Aug 2017.</li>
       <li><strong>Body Area Networking (BAN)</strong> — IJARCCE, Jul 2017.</li>
@@ -651,7 +645,6 @@
 
   <section id="courses" class="card">
     <h2>Courses</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
     <ul>
       <li>EE555 — Broadband Network Architectures (USC)</li>
       <li>EE450 — Computer Networks (USC)</li>
@@ -660,7 +653,6 @@
 
   <section id="skills" class="card">
     <h2>Skills & Languages</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
     <ul>
       <li><strong>Top skills:</strong> 5G, Wireless Technologies, Artificial Intelligence (AI), Operating Systems, C++/Python</li>
       <li><strong>Also:</strong> Distributed Systems, Linux, Networking, Performance Profiling, Docker, Kubernetes, GitHub Actions</li>
@@ -670,14 +662,12 @@
 
   <section id="recs" class="card">
     <h2>Recommendations</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
     <p>Mentorship & collaboration highlighted by colleagues including Emily Kao and Anjali (Qualcomm) in 2025.</p>
   </section>
 
   <section id="contact" class="card">
     <h2>Contact</h2>
-    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
-    <p>Connect on <a href="https://www.linkedin.com/in/sukruthbabu">LinkedIn</a> or email <a href="mailto:hello@example.com">hello@example.com</a>.</p>
+    <p>Connect on <a href="https://www.linkedin.com/in/sukruthbabu">LinkedIn</a> or email <a href="mailto:sukruthlb007@gmail.com">sukruthlb007@gmail.com</a>.</p>
   </section>
 </div>
   <aside class="sidebar">
@@ -719,16 +709,15 @@
     });
   });
 
-  // Expand/Collapse per section
-  document.querySelectorAll('.section-controls').forEach(ctrl => {
-    const section = ctrl.closest('section');
-    const details = () => Array.from(section.querySelectorAll('details'));
-    ctrl.addEventListener('click', (e) => {
+  // Expand/Collapse only in Projects
+  const projCtrl = document.querySelector('#projects .section-controls');
+  if(projCtrl){
+    projCtrl.addEventListener('click', (e) => {
       const btn = e.target.closest('button'); if(!btn) return;
       const act = btn.getAttribute('data-act');
-      details().forEach(d => d.open = (act === 'expand'));
+      document.querySelectorAll('#projects details').forEach(d => d.open = (act === 'expand'));
     });
-  });
+  }
 </script>
 </body>
 </html>
