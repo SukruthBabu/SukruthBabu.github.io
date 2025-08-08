@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sukruth Babu — Profile</title>
+<style>
+  /* Neutral, professional tokens */
+  :root{
+    --r-globalnav-height: 44px;
+    --global-nav-ad-bar-height: 0px;
+    --global-nav-collective-height: calc(var(--r-globalnav-height) + var(--global-nav-ad-bar-height));
+    --sk-focus-color: #8e8e93; /* iOS neutral gray */
+    --sk-link-disabled-opacity: .42;
+
+    /* Light theme */
+    --bg:#fff;
+    --surface:#ffffff;
+    --surface-2:#f4f4f5;
+    --stroke: rgba(0,0,0,.10);
+    --text:#0f0f12;
+    --text-sub:#515154;
+    --brand:#3a3a3c; /* neutral link color */
+    --radius:18px;
+  }
+
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; quotes:"“" "”" }
+  body{
+    margin:0; color:var(--text); background:#f5f5f7; direction:ltr; text-align:left;
+    font-size:17px; line-height:1.47059; font-weight:400; font-style:normal; font-synthesis:none;
+    font-family:"SF Pro Text","SF Pro Icons",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  a{ color:var(--brand); text-decoration:none }
+  a[aria-disabled="true"]{ opacity:var(--sk-link-disabled-opacity); pointer-events:none }
+  a:focus-visible{ outline:none; box-shadow:0 0 0 3px var(--sk-focus-color); border-radius:10px; outline-offset:1px }
+
+  /* Top tabs (neutral glossy) */
+  .tabs{ position:sticky; top:0; z-index:100; min-height:var(--global-nav-collective-height); display:flex; align-items:center;
+    backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: color-mix(in oklab, #ffffff 85%, transparent);
+    border-bottom:1px solid var(--stroke);
+    box-shadow:0 10px 40px -30px rgba(0,0,0,.35);
+  }
+  .tabs .wrap{ max-width:1200px; margin:0 auto; padding:10px 20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+  .tab{ position:relative; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px;
+    color:var(--text); border:1px solid var(--stroke);
+    background:linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,.78));
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .tab:hover{ transform: translateY(-2px) scale(1.04); box-shadow:0 14px 36px -14px rgba(0,0,0,.1) }
+  .tab::after{ content:""; position:absolute; left:10px; right:10px; bottom:6px; height:2px; border-radius:2px; opacity:.0;
+    background:linear-gradient(90deg, #6b6b70, #a1a1a6); transform: scaleX(.3); transform-origin:left; transition: transform .2s ease, opacity .2s ease }
+  .tab:hover::after{ opacity:.7; transform:scaleX(1) }
+  .tab.active{ background:linear-gradient(180deg, #fff, #f5f5f7) }
+  .tab.active::after{ opacity:1; transform:scaleX(1) }
+  .tab:focus-visible{ box-shadow:0 0 0 3px var(--sk-focus-color), 0 10px 30px -16px rgba(0,0,0,.08) }
+
+  /* Hero */
+  header.hero{ max-width:1200px; margin:0 auto; padding:48px 20px 28px; display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center }
+  .hero-copy h1{ font-size: clamp(36px, 6vw, 68px); line-height:1.04; margin:6px 0 10px; font-weight:800 }
+  .eyebrow{ color:var(--text-sub); font-weight:600; text-transform:uppercase; letter-spacing:.12em; font-size:.8rem }
+  .subtitle{ color:var(--text-sub); font-size: clamp(16px, 2vw, 20px) }
+  .cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px }
+  .btn{ padding:12px 16px; border-radius:999px; font-weight:700; border:1px solid var(--stroke); display:inline-flex; align-items:center; gap:8px; color:var(--text) }
+  .btn.primary{ background:linear-gradient(180deg, #fff, #f2f2f2); border-color:var(--stroke) }
+  .btn.secondary{ background:#fff }
+
+  .hero-portrait{ position:relative; aspect-ratio:1; max-width:320px; margin:0 auto }
+  .ring{ position:absolute; inset:-10%; border-radius:50%; filter: blur(12px);
+    /* neutral highlight (no blue) */
+    background: conic-gradient(from 180deg, rgba(0,0,0,.08), rgba(0,0,0,0) 40%);
+    opacity:.5; pointer-events:none }
+  .avatar{ position:relative; width:100%; height:100%; border-radius:50%; object-fit:cover; border:1px solid var(--stroke); box-shadow:0 20px 60px -30px rgba(0,0,0,.15) }
+
+  /* Layout */
+  .layout{ max-width:1200px; margin:12px auto 40px; padding:0 20px; display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:28px; align-items:start }
+  @media (max-width:1000px){ .layout{ grid-template-columns:1fr } }
+  /* clear separation between sections */
+  .content{ display:grid; gap:36px }
+
+  .card{ position:relative; border-radius:var(--radius); background:var(--surface); border:1px solid rgba(0,0,0,.14); padding:22px;
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset, 0 18px 40px -30px rgba(0,0,0,.2);
+    transition: transform .28s cubic-bezier(.22,.61,.36,1), box-shadow .28s ease, background .28s ease, filter .28s ease; }
+  section.card h2{ margin:0 0 10px; font-size: clamp(22px, 3vw, 30px) }
+
+  .sidebar .card{ position:sticky; top:calc(var(--global-nav-collective-height) + 20px) }
+  .stack{ display:grid; gap:14px }
+  .tile{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; border-radius:14px; border:1px solid var(--stroke); background:linear-gradient(180deg, #fff, #f8f8fa) }
+
+  footer{ text-align:center; padding:28px 0; color:var(--text-sub); border-top:1px solid var(--stroke) }
+
+  /* Experience */
+  .exp-item{ display:grid; grid-template-columns:72px 1fr; gap:14px; align-items:start; margin:16px 0; }
+  .exp-logo{ width:64px; height:64px; object-fit:cover; border-radius:14px; border:1px solid var(--stroke); box-shadow:0 10px 24px -18px rgba(0,0,0,.2) }
+  .meta{ color:var(--text-sub); font-size:.95rem }
+  details{ margin-top:8px }
+  summary{ cursor:pointer; user-select:none; list-style:none }
+  summary::-webkit-details-marker{ display:none }
+
+  /* Cert + Project layout */
+  .cert-item, .proj-item{ display:grid; grid-template-columns:48px 1fr; gap:14px; align-items:start; margin:16px 0; }
+  .cert-logo, .proj-logo{ width:40px; height:40px; border-radius:10px; object-fit:cover; border:1px solid var(--stroke) }
+  .btn.small{ padding:8px 12px; font-weight:700; font-size:.95rem; border-radius:999px; border:1px solid var(--stroke); background:#fff; color:var(--text); display:inline-flex; gap:8px; align-items:center }
+  .btn.small:hover{ transform: translateY(-1px); box-shadow:0 12px 28px -16px rgba(0,0,0,.15) }
+  .summary-row{ display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px; flex-wrap:wrap }
+  .title{ font-size: clamp(16px, 2vw, 20px) }
+  .duration{ margin-left:auto; color:var(--text-sub) }
+  .arrow{ width:12px; height:12px; display:inline-block; margin-right:4px; transform: translateY(1px) rotate(0deg); transition: transform .18s ease, opacity .18s ease; opacity:.92; color:#6e6e73; background: currentColor; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat center / contain; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>') no-repeat center / contain; }
+  details[open] .arrow{ transform: rotate(180deg); opacity:1 }
+
+  /* Education */
+  .edu-grid{ display:grid; gap:16px }
+  .edu-card{ display:grid; grid-template-columns:84px 1fr; gap:16px; align-items:flex-start; border:1px solid var(--stroke); border-radius:var(--radius); padding:18px; background:linear-gradient(180deg, #fff, #fafafa); box-shadow:0 1px 0 rgba(255,255,255,.9) inset }
+  .edu-logo{ width:72px; height:72px; object-fit:cover; border-radius:16px; border:1px solid var(--stroke) }
+  .edu-head{ display:flex; flex-wrap:wrap; align-items:center; gap:10px }
+  .edu-head h3{ margin:0; font-size: clamp(18px,2.6vw,22px) }
+  .badge{ display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; border:1px solid var(--stroke); background:#fff; font-size:.9rem; color:var(--text-sub) }
+  .edu-body{ margin-top:6px; color:var(--text-sub) }
+  .edu-details summary{ display:flex; align-items:center; gap:10px; font-weight:700 }
+  .course-grid{ columns: 2; column-gap: 18px; padding-left: 18px; }
+  @media (max-width:760px){ .course-grid{ columns:1 } .edu-card{ grid-template-columns:64px 1fr } .edu-logo{ width:56px; height:56px } }
+
+  /* Projects */
+  .proj-item{ border:1px solid var(--stroke); border-radius:var(--radius); padding:16px; background:linear-gradient(180deg, #fff, #f8f8fa); box-shadow:0 1px 0 rgba(255,255,255,.8) inset; transition:transform .18s ease, box-shadow .18s ease }
+  .proj-item:hover{ transform: translateY(-2px); box-shadow:0 20px 50px -40px rgba(0,0,0,.18) }
+  .proj-meta{ display:flex; flex-wrap:wrap; gap:8px; margin-left:6px; font-weight:600 }
+  .pill{ padding:4px 8px; border:1px solid var(--stroke); border-radius:999px; font-size:.85rem; color:var(--text-sub); background:#fff }
+  .proj-item details{ margin-top:0 }
+  .proj-item summary{ cursor:pointer; user-select:none; list-style:none }
+  .proj-item summary::-webkit-details-marker{ display:none }
+
+  /* Section controls (only used in Projects) */
+  .section-controls{ margin:-2px 0 12px; display:flex; gap:8px; flex-wrap:wrap }
+  .ghost{ appearance:none; background:linear-gradient(180deg, #fff, #f6f6f8); color:var(--text); border:1px solid var(--stroke); border-radius:999px; padding:8px 12px; font-weight:700; font-size:.92rem; cursor:pointer }
+  .ghost:hover{ transform: translateY(-1px); box-shadow:0 10px 24px -18px rgba(0,0,0,.18) }
+
+  /* Glossy, high-contrast typography tweaks */
+  h1, h2{ background:linear-gradient(180deg, #1e1e22 0%, #0b0b0c 100%); -webkit-background-clip:text; background-clip:text; color:transparent }
+  h3{ color:#111114 }
+  p, li, .meta, .tile span{ color:var(--text) }
+
+  /* --- Professional grey block + reflection (main sections) --- */
+  main .content section.card{
+    background:
+      radial-gradient(120% 60% at 50% -20%, rgba(255,255,255,.55), transparent 60%),
+      linear-gradient(180deg, #eef1f6 0%, #e6e9ef 55%, #dde2ea 100%);
+    border-color: rgba(0,0,0,.14);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.6) inset,
+      0 10px 24px -18px rgba(0,0,0,.35);
+    -webkit-box-reflect: below 12px linear-gradient(transparent 0, rgba(0,0,0,.14) 38%, rgba(0,0,0,0) 82%);
+  }
+
+  /* Amazing & cool hover: zoom-in + floaty shadow */
+  @keyframes hoverFloatShadow {
+    0% { filter: drop-shadow(0 16px 22px rgba(0,0,0,.14)); }
+    100% { filter: drop-shadow(0 24px 38px rgba(0,0,0,.16)); }
+  }
+  main .content section.card:hover{
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.6) inset,
+      0 28px 70px -32px rgba(0,0,0,.45);
+    animation: hoverFloatShadow 1.2s ease-in-out alternate infinite;
+  }
+  /* floating look for inner items on section hover */
+  main .content section.card:hover > *{
+    transform: translateZ(0); /* promote */
+  }
+
+  /* Optional: reflect sidebar too when body has reflect-all */
+  body.reflect-all .sidebar .card,
+  body.reflect-all .sidebar .tile{
+    background:
+      radial-gradient(120% 60% at 50% -20%, rgba(255,255,255,.5), transparent 60%),
+      linear-gradient(180deg, #eef1f6 0%, #e6e9ef 55%, #dde2ea 100%);
+    border-color: rgba(0,0,0,.14);
+    -webkit-box-reflect: below 10px linear-gradient(transparent 0, rgba(0,0,0,.12) 42%, rgba(0,0,0,0) 80%);
+  }
+
+  /* Opt-out utility */
+  .no-reflect{ -webkit-box-reflect: unset !important; }
+</style>
+</head>
+<body>
+<nav class="tabs" aria-label="Primary">
+  <div class="wrap">
+    <a class="tab" href="#about">About</a>
+    <a class="tab" href="#experience">Experience</a>
+    <a class="tab" href="#education">Education</a>
+    <a class="tab" href="#certs">Certifications</a>
+    <a class="tab" href="#projects">Projects</a>
+    <a class="tab" href="#publications">Publications</a>
+    <a class="tab" href="#courses">Courses</a>
+    <a class="tab" href="#skills">Skills</a>
+    <a class="tab" href="#recs">Recommendations</a>
+    <a class="tab" href="#contact">Contact</a>
+  </div>
+</nav>
+<header class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">Sr. Software Engineer · Qualcomm</div>
+    <h1>Engineering next-gen connectivity and intelligence.</h1>
+    <p class="subtitle">Systems & networks engineer focused on performance, reliability, and delightful developer experiences. Ex‑NVIDIA. MS CE @ USC.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/sukruthbabu" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn secondary" href="mailto:hello@example.com">Email</a>
+    </div>
+  </div>
+  <div class="hero-portrait">
+    <div class="ring" aria-hidden="true"></div>
+    <img class="avatar" src="profile.jpg" alt="Portrait of Sukruth Babu"/>
+  </div>
+</header>
+
+<main><div class="layout"><div class="content">
+  <section id="about" class="card">
+    <h2>About</h2>
+    <p>I’m a passionate engineer with a deep rooted curiosity for how systems operate, from the core of wireless protocols to the latest in generative AI. My journey began with a degree in Electronics and Communication Engineering, where I built a strong foundation in both hardware and software. Over time, that foundation evolved into a relentless drive to push boundaries in software engineering and emerging technologies.</p>
+    <p>Currently, I work as a Senior Software Engineer at Qualcomm in the Wireless R&amp;D division, where I focus on developing cutting edge next generation 5G/6G protocol software. My work sits at the intersection of performance, reliability, and innovation, building the software that powers tomorrow's wireless communication.</p>
+    <p>Beyond protocols, I’ve explored a wide range of domains, including robotics, computer vision, automation, app development, and generative AI. I’ve worked with LangChain, Hugging Face, and LLaMA models to develop internal AI tools and improve developer workflows.</p>
+    <p>Technically, I specialize in C++, Python, and Java, with additional experience in Rust and Dart. My core interests lie in Networks, Operating Systems, Artificial Intelligence, Generative AI, Cloud Computing, and IoT, areas where I continue to deepen my knowledge and apply it to real-world problems.</p>
+    <p>Driven by curiosity and a constant urge to learn, I thrive on solving complex problems and building impactful tech. I’m always looking ahead to the next breakthrough, the next challenge, and the next opportunity to grow.</p>
+  </section>
+
+  <section id="experience" class="card">
+    <h2>Experience</h2>
+    <div class="exp-item">
+      <img class="exp-logo" src="assets/qualcomm.png" alt="Qualcomm"/>
+      <div>
+        <h3>Qualcomm — Senior Software Engineer (Wireless R&amp;D)</h3>
+        <div class="meta">San Diego, CA · Nov 2022 – Present · Full‑time</div>
+        <ul>
+          <li>Developing next‑gen 5G/6G protocol software at the intersection of performance, reliability, and innovation.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <img class="exp-logo" src="assets/qualcomm.png" alt="Qualcomm"/>
+      <div>
+        <h3>Qualcomm — Software Engineer (Wireless R&amp;D)</h3>
+        <div class="meta">San Diego, CA · Feb 2021 – Nov 2022 · Full‑time</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <img class="exp-logo" src="assets/nvidia.png" alt="NVIDIA"/>
+      <div>
+        <h3>NVIDIA — Software Engineer Intern</h3>
+        <div class="meta">Santa Clara, CA · Aug 2020 – Dec 2020 · Internship</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <img class="exp-logo" src="assets/qualcomm.png" alt="Qualcomm"/>
+      <div>
+        <h3>Qualcomm — Software Engineer Intern (Wireless R&amp;D)</h3>
+        <div class="meta">San Diego, CA · May 2020 – Aug 2020 · Internship</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <img class="exp-logo" src="assets/usc_its.png" alt="USC ITS"/>
+      <div>
+        <h3>USC ITS — Student Technical Lead</h3>
+        <div class="meta">Los Angeles, CA · Oct 2019 – May 2020 · 8 mos</div>
+        <p>Handling MOMS workstation, customer relations, and troubleshooting problems associated with classroom technology.</p>
+      </div>
+    </div>
+    <div class="exp-item">
+      <img class="exp-logo" src="assets/usc_its.png" alt="USC ITS"/>
+      <div>
+        <h3>USC ITS — Student Technical Assistant</h3>
+        <div class="meta">Los Angeles, CA · Aug 2019 – Sep 2019 · 2 mos</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <img class="exp-logo" src="assets/usc.png" alt="USC ANRG"/>
+      <div>
+        <h3>USC — Research Intern at ANRG</h3>
+        <div class="meta">Los Angeles, CA · Sep 2019 – May 2020 · 9 mos</div>
+        <p><strong>Project 1:</strong> Research intern on the <em>I3 smart‑community IoT marketplace</em> — web‑based marketplace frontend with a pub/sub broker backend enabling sellers to post streaming data products and buyers to purchase them.</p>
+        <p><strong>Project 2:</strong> Testing of LoRaWAN gateway using the Microchip RN2903A module.</p>
+        <ul>
+          <li>Explored sys &amp; mac commands via serial connection with TeraTerm; built RN2903 helper library.</li>
+          <li>Established RN2903A ↔ The Things Network (OTAA); observed SNR and packet delivery.</li>
+          <li>Wrote a Python MQTT (paho) script to observe and store transmitted packets locally.</li>
+        </ul>
+        <p>Links: <a href="https://lorawan.readthedocs.io/en/latest/" target="_blank" rel="noopener">LoRaWAN docs</a> · <a href="https://www.linkedin.com/in/sukruthbabu/overlay/experience/1519514058/multiple-media-viewer?profileId=ACoAACZ3ChsBAT7ah8sYHTPoHiXmwKfA57Are44&amp;treasuryMediaId=1581978332283&amp;type=LINK" target="_blank" rel="noopener">Media 1</a> · <a href="https://www.linkedin.com/in/sukruthbabu/overlay/experience/1519514058/multiple-media-viewer?profileId=ACoAACZ3ChsBAT7ah8sYHTPoHiXmwKfA57Are44&amp;treasuryMediaId=1581975369529&amp;type=LINK" target="_blank" rel="noopener">Media 2</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="card">
+    <h2>Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <img class="edu-logo" src="assets/usc.png" alt="USC"/>
+        <div>
+          <div class="edu-head">
+            <h3>University of Southern California — M.S., Computer Engineering</h3>
+            <span class="badge">2019–2020</span>
+            <span class="badge">GPA 3.76</span>
+          </div>
+          <div class="edu-body">Los Angeles, CA</div>
+          <details class="edu-details">
+            <summary><span class="arrow"></span> Coursework (full list)</summary>
+            <ul class="course-grid">
+              <li>EE450: Introduction to Computer Networks (Prof. Ali Zahid)</li>
+              <li>EE503: Probability for ECE (Prof. Micheal James Neely)</li>
+              <li>EE511: Simulation Methods for Stochastic Systems (Prof. Osonde A. Osoba)</li>
+              <li>CSCI402: Operating Systems (Prof. Bill Cheng)</li>
+              <li>EE542: Internet and Cloud Computing (Prof. Young H Cho)</li>
+              <li>EE511: Wireless Networks (Prof. Bhaskar Krishnamachari)</li>
+              <li>EE598: Electrical Engineering Research Seminar</li>
+              <li>EE555: Broadband Architectures (Prof. Ali Zahid)</li>
+              <li>EE590: Directed Research (Prof. Bhaskar Krishnamachari)</li>
+              <li>CS585: Database Systems (Prof. Saty Raghavachary)</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+
+      <div class="edu-card">
+        <img class="edu-logo" src="assets/bms.png" alt="BMS College"/>
+        <div>
+          <div class="edu-head">
+            <h3>B. M. S. College of Engineering — B.E., Electronics &amp; Communications</h3>
+            <span class="badge">2014–2018</span>
+            <span class="badge">Grade 9.07</span>
+          </div>
+          <div class="edu-body">Bengaluru, India</div>
+          <details class="edu-details">
+            <summary><span class="arrow"></span> Coursework (full list)</summary>
+            <ul class="course-grid">
+              <li>Computer Networks</li>
+              <li>C programming</li>
+              <li>Object Oriented Programming</li>
+              <li>Data Structures and Algorithms</li>
+              <li>Python</li>
+              <li>Java</li>
+              <li>Operating Systems</li>
+              <li>Advanced Engineering Mathematics</li>
+              <li>Linear Circuit Analysis</li>
+              <li>Analog Microelectronics</li>
+              <li>Digital Electronics</li>
+              <li>Fields and Waves</li>
+              <li>Verilog HDL programming</li>
+              <li>Analog Integrated Circuits</li>
+              <li>Microcontrollers and applications</li>
+              <li>Signals and Systems</li>
+              <li>Fundamentals of VLSI</li>
+              <li>Control Systems</li>
+              <li>Mixed Signal Design</li>
+              <li>Basics of Electrical Engineering</li>
+              <li>Antenna and Wave Propagation</li>
+              <li>Power Electronics</li>
+              <li>Network Security and Cryptography</li>
+              <li>Multimedia Communication</li>
+              <li>Embedded Systems</li>
+              <li>Analog and Digital Electronics</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs" class="card">
+    <h2>Licenses &amp; Certifications</h2>
+    <div class="cert-item">
+      <img class="cert-logo" src="assets/linkedin.png" alt="LinkedIn Learning" />
+      <div>
+        <h3>What Is Generative AI?</h3>
+        <div class="meta">LinkedIn Learning · Issued Apr 2024</div>
+        <div class="meta">Credential ID: e3bc4befc122b1f57a8053a9359c98c09b6196a26f21fad3313d4ba10d88f050</div>
+        <div class="cta" style="margin-top:10px">
+          <a class="btn small" href="https://www.linkedin.com/learning/what-is-generative-ai?u=67551194&amp;lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_certifications_details%3B69yCFhAtRF2E4lV%2B2q2jMA%3D%3D" target="_blank" rel="noopener">Show credential</a>
+          <a class="btn small" href="certs/CertificateOfCompletion_What Is Generative AI.pdf" target="_blank" rel="noopener">View PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-item">
+      <img class="cert-logo" src="assets/coursera.png" alt="Coursera" />
+      <div>
+        <h3>Machine Learning</h3>
+        <div class="meta">Coursera · Issued Sep 2018</div>
+        <div class="meta">Credential ID: XBDM89L2X8AK</div>
+        <div class="cta" style="margin-top:10px">
+          <a class="btn small" href="https://www.coursera.org/account/accomplishments/verify/XBDM89L2X8AK" target="_blank" rel="noopener">Show credential</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-item">
+      <img class="cert-logo" src="assets/microsoft.png" alt="Microsoft" />
+      <div>
+        <h3>MTA: Security Fundamentals — Certified 2018</h3>
+        <div class="meta">Microsoft · Issued Jul 2018</div>
+        <div class="cta" style="margin-top:10px">
+          <a class="btn small" href="https://www.youracclaim.com/badges/d60426f6-f81e-4d54-a1aa-4c06a38205ea" target="_blank" rel="noopener">Show credential</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-item">
+      <img class="cert-logo" src="assets/cisco.png" alt="Cisco" />
+      <div>
+        <h3>Cisco Certified Network Associate Routing &amp; Switching (CCNA)</h3>
+        <div class="meta">Cisco · Issued Nov 2018 · Expired Nov 2021</div>
+        <div class="cta" style="margin-top:10px">
+          <a class="btn small" href="https://www.youracclaim.com/badges/feedf17d-036b-4ee9-927c-5ac0579ff145/linked_in_profile" target="_blank" rel="noopener">Show credential</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-item">
+      <img class="cert-logo" src="assets/cisco.png" alt="Cisco" />
+      <div>
+        <h3>Understanding of Cisco Network Devices</h3>
+        <div class="meta">Cisco · Issued Feb 2020 · Expired Nov 2021</div>
+        <div class="cta" style="margin-top:10px">
+          <a class="btn small" href="https://www.youracclaim.com/earner/earned/badge/53be8a27-b79c-48f1-8861-93bfb5b1a2a5" target="_blank" rel="noopener">Show credential</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="card">
+    <h2>Projects</h2>
+    <div class="section-controls"><button class="ghost" data-act="expand">Expand all</button><button class="ghost" data-act="collapse">Collapse all</button></div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Designing a fast and reliable file transfer protocol</span> <span class="duration meta">Sep 2019 – Present</span></summary>
+          <p>Built a protocol that transfers a file of <strong>1GB</strong> reliably in four minutes over a lossy link whereas SCP (secure copy) would take minutes. Protocol uses <strong>NACK's</strong> for re‑transmissions. Achieved a throughput of <strong>34 Mbps</strong> over a <strong>1 Gbps</strong> link with <strong>200 ms</strong> induced delay and <strong>20% packet loss</strong>.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Kernel Hacking to Improve TCP</span> <span class="duration meta">Sep 2019 – Present</span></summary>
+          <p>Tweaked TCP congestion control modules and Linux source code to improve its performance over lossy links. Compiled the edited kernel and increased throughput of TCP from stalling to <strong>11.2 Mbps</strong> over a lossy‑link (<strong>20% loss</strong>) of <strong>100 Mbps</strong> bandwidth and <strong>200 ms RTT</strong>.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Multi‑threading — Token Bucket Emulation in C</span> <span class="duration meta">Jun 2019 – Present</span></summary>
+          <ul>
+            <li>Designed a traffic shaper which transmits TCP/IP packets controlled by a token bucket filter and programmed a time‑driven emulation of the Token Bucket Algorithm.</li>
+            <li>Regulated the functionality of a user interrupt to abort the emulation, provide statistics, and simulated multiple queues using doubly circular linked lists.</li>
+            <li>Utilized multi‑threading within a single process to run independent tasks in parallel from the Pthread library (token generator, token bucket, servers).</li>
+            <li>Handled race conditions using mutexes and prevented starvation using conditional waits and broadcasts.</li>
+          </ul>
+          <p class="meta">Technologies used: C programming, Unix, Ubuntu 16.04 VM, POSIX threads, signal handling, GDB.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Bank Transaction Sorting using Circular Doubly Linked List in C</span> <span class="duration meta">May 2019 – Present</span></summary>
+          <ul>
+            <li>Designed an efficient circular doubly linked list in C to sort bank transactions based on their timestamp.</li>
+            <li>Tested and implemented the code on Ubuntu 16.04.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Analysis of networking protocols using Wireshark</span> <span class="duration meta">Apr 2019 – Present</span></summary>
+          <ul>
+            <li>Examined DHCP and DNS operations by sniffing packets captured by the host interface.</li>
+            <li>Investigated the DORA operation in DHCP and request and query operations in DNS.</li>
+            <li>Analyzed the behavior and performance of ARP, TCP, UDP, ICMP, IP, and HTTP between client and server.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Software Defined Networking (SDN) using OpenFlow</span> <span class="duration meta">Mar 2020 – May 2020</span></summary>
+          <p>Implemented OpenFlow protocol for L1–L4 functions using Mininet on a Python‑based POX SDN controller platform.</p>
+          <ul>
+            <li><strong>L1 functions:</strong> Verified hub behavior with <code>tcpdump</code>/<code>ping</code>; benchmarked hub controller with <code>iperf</code>.</li>
+            <li><strong>L2 functions:</strong> Designed a controller‑based learning switch that learns source‑port mapping; built a flow‑accelerated learning switch where known flows push entries down to the switch.</li>
+            <li><strong>L3 functions:</strong> Built a static L3 forwarder; configured subnets/IP/gateway/netmask; created ARP cache, routing table, and IP→port dictionary; tested TCP/UDP traffic with <code>iperf</code>.</li>
+            <li><strong>L4 functions:</strong> Modified the router to reject connection attempts to specific ports (firewall‑like); verified with <code>iperf</code>.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Android‑Based IoT on AWS</span> <span class="duration meta">Nov 2019 – Dec 2019</span></summary>
+          <ul>
+            <li>Accessed sensors on a smartphone (GPS, barometer, accelerometer, gyro, light sensor, camera, mic) to generate data.</li>
+            <li>Captured data with Node‑RED and visualized it in AWS IoT on a distributable dashboard.</li>
+            <li>Exposed sensors on Android using Termux API.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Drone Tracking Synchronization using UDP</span> <span class="duration meta">Nov 2019 – Dec 2019</span></summary>
+          <ul>
+            <li>8 drones and 8 targets; goal: establish reliable communication with UDP so each drone uniquely matches a target.</li>
+            <li>Used Boeing real‑time network emulator; established an agreement protocol for unique matching when in range.</li>
+            <li>Optimized Python modules to improve link performance; designed an algorithm to complete missions efficiently.</li>
+            <li><strong>Algorithm summary:</strong> If a target is free, lock it. If two UAVs clash for a target, choose the closest in range.</li>
+            <li>Proved algorithm efficiency under various loss‑rate scenarios.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Smart Power Saving</span> <span class="duration meta">Nov 2019 – Dec 2019</span></summary>
+          <ul>
+            <li>Goal: reduce electricity bills and generator usage to help the environment.</li>
+            <li>Deployed a home setup: X‑Dot, battery, Hall‑effect (current) sensors, wireless switch, wireless switch controller.</li>
+            <li>Used a MultiTech Conduit to cover a neighborhood; data flowed from X‑Dot → AWS IoT Core via Node‑RED → Kinesis → Lambda (JSON→CSV) → S3 → ML prediction.</li>
+            <li>Predictions guide utility decision‑making to shut down generators when not needed.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Implementing Weenix (A Unix‑based Operating System)</span> <span class="duration meta">Jun 2019 – Aug 2019</span></summary>
+          <p>Project implemented on Ubuntu 16.04</p>
+          <p><strong>Part A) Processes and Threads Sub‑system</strong></p>
+          <ul>
+            <li>Built a process subsystem to create and run processes and threads in a non‑preemptive Weenix kernel.</li>
+            <li>Implemented one‑level threads, context‑switch scheduling, and mutex synchronization.</li>
+            <li>Implemented interrupt handling and used Kshell to exercise device‑driver interrupts.</li>
+          </ul>
+          <p><strong>Part B) Virtual File System</strong></p>
+          <ul>
+            <li>Designed a VFS compatible with RAMFS and S5FS: naming, protection, VFS APIs, and kernel file‑opening data structures.</li>
+          </ul>
+          <p><strong>Part C) Virtual Memory Management</strong></p>
+          <ul>
+            <li>Two‑level paging; shadow objects to facilitate copy‑on‑write with <code>fork</code>; system calls for user processes.</li>
+          </ul>
+          <p class="meta">Technologies used: C, Unix, multi‑threading, scheduling, GDB.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Simulation and performance analysis using Riverbed Modeler (OPNET)</span> <span class="duration meta">Feb 2019 – May 2019</span></summary>
+          <p>Analyzed networking structures and protocols:</p>
+          <ol>
+            <li>Shared Ethernet structures</li>
+            <li>Switched Ethernet structures</li>
+            <li>WLAN planning simulations</li>
+            <li>RIP</li>
+            <li>OSPF</li>
+          </ol>
+          <p>Built multiple scenarios with varying parameters; evaluated performance measures and compared outcomes. Studied link‑failure effects in RIP and load balancing in OSPF.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/bms.png" alt="BMS"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Adoption of Machine Learning in Handwritten Digit Recognition</span> <span class="duration meta">—</span></summary>
+          <ul>
+            <li>Created a product to detect short numbers, analyze and predict them correctly, and write results to Excel for record‑keeping.</li>
+            <li>Individual role: implemented image preprocessing, worked on Raspberry Pi module, and designed ML code to predict individual digits.</li>
+          </ul>
+          <p class="meta">Technologies used: Python, Machine Learning, Optimizers, Image Processing, Raspberry Pi, OpenCV.</p>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/bms.png" alt="BMS"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Home Automation using IoT</span> <span class="duration meta">—</span></summary>
+          <ul>
+            <li>Designed a home‑automation model using the TI CC3200 LaunchPad (IoT MCU).</li>
+            <li>Individual role: designed the home‑automation board and created an HTML webpage.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/bms.png" alt="BMS"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Kogge‑Stone Adder</span> <span class="duration meta">—</span></summary>
+          <ul>
+            <li>Designed one of the fastest adder configurations used in modern CMOS technologies.</li>
+            <li>Individual role: designed the carry‑generation network.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/bms.png" alt="BMS"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Motor Control Using PID Controller</span> <span class="duration meta">—</span></summary>
+          <ul>
+            <li>Designed a PID control system that precisely controls the direction and speed of an electric motor.</li>
+            <li>Individual role: designed a feedback loop for the PID controller.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/bms.png" alt="BMS"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">QAM Simulation using SystemVue</span> <span class="duration meta">—</span></summary>
+          <ul>
+            <li>Simulated a QAM communication system using Keysight SystemVue (EDA).</li>
+            <li>Individual role: designed the QAM circuit using SystemVue.</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+
+    <div class="proj-item">
+      <img class="proj-logo" src="assets/usc.png" alt="USC"/>
+      <div>
+        <details open>
+          <summary class="summary-row"><span class="arrow"></span> <span class="title">Socket Programming — Model Computational Offloading using AWS</span> <span class="duration meta">—</span></summary>
+          <p>Implemented a model computational offloading system where a single client issues two functions (compute and write) with parameters to an AWS server and receives the end‑to‑end delay of the designated link.</p>
+          <p>The devices included: <strong>client</strong> (issues functions), <strong>monitor</strong> (prints every step), <strong>AWS server</strong> (communicates with backends), <strong>backend server A</strong> (storage server with a database file), and <strong>backend server B</strong> (computes transmission, propagation, and end‑to‑end delay).</p>
+          <p class="meta">Technologies used: C, TCP, UDP, AWS, Socket Programming, Linux.</p>
+        </details>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="publications" class="card">
+    <h2>Publications</h2>
+    <ul>
+      <li><strong>BAN — Implementation</strong> — International Journal of Advanced Research in Computer and Communication Engineering (IJARCCE), Aug 2017.</li>
+      <li><strong>Body Area Networking (BAN)</strong> — IJARCCE, Jul 2017.</li>
+    </ul>
+  </section>
+
+  <section id="courses" class="card">
+    <h2>Courses</h2>
+    <ul>
+      <li>EE555 — Broadband Network Architectures (USC)</li>
+      <li>EE450 — Computer Networks (USC)</li>
+    </ul>
+  </section>
+
+  <section id="skills" class="card">
+    <h2>Skills & Languages</h2>
+    <ul>
+      <li><strong>Top skills:</strong> 5G, Wireless Technologies, Artificial Intelligence (AI), Operating Systems, C++/Python</li>
+      <li><strong>Also:</strong> Distributed Systems, Linux, Networking, Performance Profiling, Docker, Kubernetes, GitHub Actions</li>
+      <li><strong>Languages:</strong> English (Professional), Hindi (Professional)</li>
+    </ul>
+  </section>
+
+  <section id="recs" class="card">
+    <h2>Recommendations</h2>
+    <p>Mentorship & collaboration highlighted by colleagues including Emily Kao and Anjali (Qualcomm) in 2025.</p>
+  </section>
+
+  <section id="contact" class="card">
+    <h2>Contact</h2>
+    <p>Connect on <a href="https://www.linkedin.com/in/sukruthbabu">LinkedIn</a> or email <a href="mailto:hello@example.com">hello@example.com</a>.</p>
+  </section>
+</div>
+  <aside class="sidebar">
+    <div class="card stack">
+      <div class="tile"><span>San Diego, USA</span><span>🇺🇸</span></div>
+      <div class="tile"><span>Open to opportunities</span><span>✨</span></div>
+      <a class="tile" href="https://www.linkedin.com/in/sukruthbabu" target="_blank" rel="noopener">View LinkedIn →</a>
+      <a class="tile" href="resume.pdf" download>Download Résumé →</a>
+      <div class="tile"><span>Python • C++ • Systems</span></div>
+    </div>
+  </aside>
+</div></main>
+
+<footer>
+  © <script>document.write(new Date().getFullYear());</script> Sukruth Babu. All rights reserved.
+</footer>
+
+<script>
+  // Active tab highlight on scroll
+  const links = Array.from(document.querySelectorAll('.tabs .tab'));
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const opts = { root: null, rootMargin: '-45% 0px -50% 0px', threshold: 0 };
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ links.forEach(x=>x.classList.remove('active')); const id = e.target.id; const el = map.get(id); if(el) el.classList.add('active'); } });
+  }, opts);
+  document.querySelectorAll('main section[id]').forEach(s=>obs.observe(s));
+
+  // Smooth scroll
+  document.querySelectorAll('.tabs a').forEach(a=>{
+    a.addEventListener('click', (ev)=>{
+      const id = a.getAttribute('href');
+      const target = document.querySelector(id);
+      if(target){ ev.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+    });
+  });
+
+  // Expand/Collapse only in Projects
+  const projCtrl = document.querySelector('#projects .section-controls');
+  if(projCtrl){
+    projCtrl.addEventListener('click', (e) => {
+      const btn = e.target.closest('button'); if(!btn) return;
+      const act = btn.getAttribute('data-act');
+      document.querySelectorAll('#projects details').forEach(d => d.open = (act === 'expand'));
+    });
+  }
+</script>
+</body>
+</html>
